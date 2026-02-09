@@ -41,6 +41,38 @@ void insertAtPos(int pos,int value){
     n++;
     printf("Element Inserted!!!\n");
 }
+void delFromBeg(){
+    if(n==0){
+        printf("List is Empty !!!\n");
+        return;
+    }
+    for(int i=0;i<n-1;i++){
+        list[i]=list[i+1];
+        return;
+    }
+    n--;
+    printf("Element Deleted!!!\n");
+}
+
+void delFromEnd(){
+    if(n==0){
+        printf("List is Empty !!!\n");
+        return;
+    }
+    n--;
+}
+void delFromPos(int pos){
+    if(n==0){
+        printf("List is Empty !!!\n");
+        return;
+    }
+    for(int i=pos;i<n-1;i++){
+        list[i]=list[i+1];
+        return;
+    }
+    n--;
+    printf("Element Deleted!!!\n");
+}
 void displayList(){
     if(n==0){
         printf("List is empty!!!\n");
@@ -85,11 +117,16 @@ int main() {
                 scanf("%d",&pos);
                 insertAtPos(pos,data);
                 break;
-            case 4: 
+            case 4:
+                delFromBeg();
                 break;
             case 5: 
+                delFromEnd();
                 break;
             case 6: 
+                printf("Enter Position: ");
+                scanf("%d",&pos);
+                delFromPos(pos);
                 break;
             case 7:
                 displayList();
