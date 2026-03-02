@@ -102,25 +102,27 @@ char* convertpostfixtoinfix(char* postfixexp){
     return infix;
 }
 
-char* convertPrefixToInfix(char* prefixExp){
-    int len = strlen(prefixExp);
-    int top = -1;
+char* convertPrefixToInfix(char* prefixExp) {
+    int len = strlen(prefixExp), top = -1;
     char stack[100][100];
-    for(int i=len-1;i>=0;i++){
-        char ch = prefixExp[i]; 
-        if(isalnum(ch)){
-            char str[] = {ch, '\0'};
-            strcpy(stack[++top],str);
+    for (int i = len - 1; i >= 0; i--) {
+        char ch = prefixExp[i];
+        if (isalnum(ch)) {
+            char str[2];
+            str[0] = ch;
+            str[1] = '\0';
+            strcpy(stack[++top], str);
         }
-        else{
+        else if (ch == '+' || ch == '-' || ch == '*' || ch == '/' || ch == '^') {
             char s1[100], s2[100];
             strcpy(s1, stack[top--]);
             strcpy(s2, stack[top--]);
-
-            sprintf(stack[++top], "(%s%c%s)", s2, ch, s1);
+            char s3[100]="";
+            sprintf(s3, "(%s%c%s)", s1, ch, s2);
+            strcpy(stack[++top], s3);
         }
     }
-    char *infix = (char*)malloc(strlen(stack[top]) + 1);
+    char* infix = (char*)malloc(strlen(stack[top]) + 1);
     strcpy(infix, stack[top]);
     return infix;
 }
