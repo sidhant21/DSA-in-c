@@ -129,17 +129,16 @@ int main(){
     char infix[100];
     printf("Enter Infix Expression: ");
     scanf("%s", infix);
-    char* postfix = convertinfixtopostfix(infix);
-    printf("Postfix Expression: %s\n", postfix);
-
-    char* prefix = convertinfixtoprefix(infix);
-    printf("Prefix Expression: %s\n", prefix);
+    printf("Postfix Expression: %s\n", convertinfixtopostfix(infix));
+    printf("Prefix Expression: %s\n", convertinfixtoprefix(infix));
 
     char expr[100];
     printf("Enter Postfix Expression to convert to Infix: ");
     scanf("%s", expr);
-
     printf("Infix expression = %s\n", convertpostfixtoinfix(expr));
 
+    printf("Enter Prefix Expression to convert to Infix: ");
+    scanf("%s",expr);
+    printf("Infix expression = %s\n", convertPrefixToInfix(expr));
     return 0;
 }
