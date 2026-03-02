@@ -120,8 +120,9 @@ char* convertPrefixToInfix(char* prefixExp){
             sprintf(stack[++top], "(%s%c%s)", s2, ch, s1);
         }
     }
-    char *infix=(char*)malloc(strlen(stack[top])+1);
-    
+    char *infix = (char*)malloc(strlen(stack[top]) + 1);
+    strcpy(infix, stack[top]);
+    return infix;
 }
 
 int main(){
